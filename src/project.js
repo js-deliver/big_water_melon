@@ -987,9 +987,9 @@ window.__require = function e(t, n, o) {
                         scale: .9
                     }).union().repeatForever().start()
                 }, t.prototype.update = function(e) {}, t.prototype.adsButtonFunc2 = function() {
-                    window.open("https://ycycut.com/#/game_rank")
+                    window.location.href="https://ycycut.com/#/game_rank"
                 }, t.prototype.bannerButtonFunc = function() {
-                    window.open("https://ycycut.com/#/game_rank")
+                    window.location.href="https://ycycut.com/#/game_rank"
                 }, t.prototype.ShowFailedUi = function(e, t) {
                     var n = this;
                     this.scheduleOnce(function() {
@@ -1901,7 +1901,7 @@ window.__require = function e(t, n, o) {
                 }, t.prototype.update = function(e) {
                     this.UpdateScoreLabel(e), this.lerpCtrl && this.lerpNumFunc(this.passlevelYQ), this.levelPanel.children[1].getComponent(cc.Label).string = s.default.Instance.GetLevel().toString()
                 }, t.prototype.adsButtonFunc = function() {
-                    window.open("https://ycycut.com/#/game_rank");
+                    window.location.href="https://ycycut.com/#/game_rank";
                 }, t.prototype.TestPasslevel = function() {
                     var e = this;
                     this.lerpCtrl = !0, this.nowYQ >= this.passlevelYQ && (this.levelPanel.children[2].runAction(cc.sequence(cc.delayTime(1.3), cc.callFunc(function() {
