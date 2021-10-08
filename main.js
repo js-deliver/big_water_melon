@@ -202,10 +202,10 @@ window.boot = function() {
     if (false) {
         BK.Script.loadlib();
     } else {
-        var bundledScript = settings.debug ? 'src/project.dev.js' : 'src/project.js';
+        var bundledScript = settings.debug ? 'src/project.dev.js' : 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/project.js';
         if (jsList) {
             jsList = jsList.map(function(x) {
-                return 'src/' + x;
+                return 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/' + x;
             });
             jsList.push(bundledScript);
         } else {
@@ -226,8 +226,8 @@ window.boot = function() {
 
     // init assets
     cc.AssetLibrary.init({
-        libraryPath: 'res/import',
-        rawAssetsBase: 'res/raw-',
+        libraryPath: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/res/import',
+        rawAssetsBase: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/res/raw-',
         rawAssets: settings.rawAssets,
         packedAssets: settings.packedAssets,
         md5AssetsMap: settings.md5AssetsMap,
@@ -263,13 +263,13 @@ if (false) {
 
     var isRuntime = (typeof loadRuntime === 'function');
     if (isRuntime) {
-        require('src/settings.js');
-        require('src/cocos2d-runtime.js');
-        require('jsb-adapter/engine/index.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/settings.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/cocos2d-runtime.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/jsb-adapter/engine/index.js');
     } else {
-        require('src/settings.js');
-        require('src/cocos2d-jsb.js');
-        require('jsb-adapter/jsb-engine.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/settings.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/src/cocos2d-jsb.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@init/jsb-adapter/jsb-engine.js');
     }
 
     cc.macro.CLEANUP_IMAGE_CACHE = true;
