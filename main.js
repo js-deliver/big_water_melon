@@ -202,7 +202,7 @@ window.boot = function() {
     if (false) {
         BK.Script.loadlib();
     } else {
-        var bundledScript = settings.debug ? 'src/project.dev.js' : 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/src/project.js';
+        var bundledScript = settings.debug ? 'src/project.dev.js' : 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/src/project.js';
         if (jsList) {
             jsList = jsList.map(function(x) {
                 return 'src/' + x;
@@ -226,8 +226,8 @@ window.boot = function() {
 
     // init assets
     cc.AssetLibrary.init({
-        libraryPath: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/res/import',
-        rawAssetsBase: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/res/raw-',
+        libraryPath: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/res/import',
+        rawAssetsBase: 'https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/res/raw-',
         rawAssets: settings.rawAssets,
         packedAssets: settings.packedAssets,
         md5AssetsMap: settings.md5AssetsMap,
@@ -263,13 +263,13 @@ if (false) {
 
     var isRuntime = (typeof loadRuntime === 'function');
     if (isRuntime) {
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/src/settings.js');
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/src/cocos2d-runtime.js');
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/jsb-adapter/engine/index.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/src/settings.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/src/cocos2d-runtime.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/jsb-adapter/engine/index.js');
     } else {
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/src/settings.js');
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/src/cocos2d-jsb.js');
-        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.2/jsb-adapter/jsb-engine.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/src/settings.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/src/cocos2d-jsb.js');
+        require('https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/jsb-adapter/jsb-engine.js');
     }
 
     cc.macro.CLEANUP_IMAGE_CACHE = true;
