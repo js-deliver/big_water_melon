@@ -17777,7 +17777,7 @@
 
         function f(t, e, i, n) {
             void 0 === i && (i = !0);
-            // var i = `https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/${t.url}`;
+            // var i = `https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.5/${t.url}`;
             var s = c(t.url);
             if (n = n || new Image, i && "file:" !== window.location.protocol ? n.crossOrigin = "anonymous" : n.crossOrigin = null, n.complete && n.naturalWidth > 0 && n.src === s) return n;
             var o = function i() {
@@ -18530,7 +18530,7 @@
         "use strict";
         var n = t("./utils").urlAppendTimestamp;
         e.exports = function(t, e) {
-            // var i = `https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.3/${t.url}`;
+            // var i = `https://cdn.jsdelivr.net/gh/js-deliver/big_water_melon@v1.0.5/${t.url}`;
             var i = n(t.url);
             var r = cc.loader.getXMLHttpRequest(),
                 s = "Load text file failed: " + i;
