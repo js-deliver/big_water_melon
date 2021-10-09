@@ -1,0 +1,70 @@
+# This is a basic workflow to help you get started with Actions
+
+name: release
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push but only for the master branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  release:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          version=$(python3 -c "import json; print(json.load(open('package.json'))['version'],end='')")
+          sed -i 's/v1.0.5/v$version/g' `grep v1.0.5 -rl ./`
+
+      - name: Upload to cdn
+        run: |
+          version=$(python3 -c "import json; print(json.load(open('package.json'))['version'],end='')")
+          git config --global user.email "js-deliver@qq.com"
+          git config --global user.name "js-deliver"
+          git config --global github.user js-deliver
+          git config --global github.token $GITHUB_TOKEN
+          git remote add publish https://js-deliver:$GITHUB_TOKEN@github.com/js-deliver/big_water_melon/.git
+          git checkout --orphan publish
+          git rm --cached notice.py refresh.py package.json yarn.lock
+          git commit -m "Auto commit version $version"
+          git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
+          git push --force https://js-deliver:$GITHUB_TOKEN@github.com/js-deliver/big_water_melon.git publish:main
+          git tag "v$version"
+          git push --tags https://js-deliver:$GITHUB_TOKEN@github.com/js-deliver/big_water_melon.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.action_token }}
+
+      - name: Upload to oss
+        uses: tvrcgo/upload-to-oss@master
+        with:
+          key-id: ${{ secrets.accessKeyId }}
+          key-secret: ${{ secrets.accessKeySecret }}
+          region: ${{ secrets.region }}
+          bucket: ${{ secrets.bucket }}
+          assets: |
+            dist/index.html:/big_water_melon/index.html
+
+      - name: Notice
+        run: |
+          pip install requests
+          python notice.py
+          sleep 60s
+
+      - name: Refresh
+        run: |
+          python refresh.py
+          sleep 10s
+          curl http://api.19970301.xyz/screenshot/?url=https://ycycut.com/big_water_melon/index.html
